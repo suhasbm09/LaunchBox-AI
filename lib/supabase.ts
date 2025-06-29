@@ -1,9 +1,14 @@
 import { createClient } from '@supabase/supabase-js';
 import { logger } from './logger';
-import { validateEnvironmentVariables } from './security';
 
-// Only validate environment variables on the server
-if (typeof window === 'undefined') {
+// Get environment variables with fallbacks for development
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://placeholder.supabase.co';
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'placeholder-key';
+
+// Only validate environment variables on the server and in production
+const shouldValidateEnv = typeof window === 'undefined' && process.env.NODE_ENV === 'production';
+
+if (shouldValidateEnv) {
   try {
     validateEnvironmentVariables();
   } catch (error) {
@@ -12,8 +17,13 @@ if (typeof window === 'undefined') {
   }
 }
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+// Warn in development if using placeholder values
+if (process.env.NODE_ENV === 'development' && typeof window === 'undefined') {
+  if (supabaseUrl.includes('placeholder') || supabaseAnonKey.includes('placeholder')) {
+    console.warn('⚠️  Using placeholder Supabase credentials. Please update your .env.local file with actual values.');
+    console.warn('📖 See README.md for setup instructions.');
+  }
+}
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
   auth: {
@@ -284,8 +294,33 @@ export const checkConnection = async (): Promise<boolean> => {
   }
 };
 
-// Initialize connection check on module load
-if (typeof window !== 'undefined') {
+// Environment variable validation (moved here to avoid circular imports)
+const validateEnvironmentVariables = (): void => {
+  const required = [
+    'NEXT_PUBLIC_SUPABASE_URL',
+    'NEXT_PUBLIC_SUPABASE_ANON_KEY'
+  ];
+
+  const missing = required.filter(key => !process.env[key]);
+  
+  if (missing.length > 0) {
+    const error = new Error(`Missing required environment variables: ${missing.join(', ')}`);
+    logger.error('Environment validation failed', error);
+    throw error;
+  }
+
+  // Validate URL format
+  try {
+    new URL(process.env.NEXT_PUBLIC_SUPABASE_URL!);
+  } catch {
+    const error = new Error('Invalid NEXT_PUBLIC_SUPABASE_URL format');
+    logger.error('Environment validation failed', error);
+    throw error;
+  }
+};
+
+// Initialize connection check on module load (only in browser and with valid config)
+if (typeof window !== 'undefined' && !supabaseUrl.includes('placeholder')) {
   checkConnection().catch(() => {
     // Connection check failed, but don't throw to avoid breaking the app
     logger.warn('Initial Supabase connection check failed');

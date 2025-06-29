@@ -47,10 +47,10 @@ export const sanitizeUrl = (url: string): string => {
 // XSS prevention
 export const escapeHtml = (text: string): string => {
   const map: Record<string, string> = {
-    '&': '&amp;',
-    '<': '&lt;',
-    '>': '&gt;',
-    '"': '&quot;',
+    '&': '&',
+    '<': '<',
+    '>': '>',
+    '"': '"',
     "'": '&#039;'
   };
   return text.replace(/[&<>"']/g, (m) => map[m]);
@@ -218,31 +218,6 @@ export class SessionManager {
     return true;
   }
 }
-
-// Environment variable validation
-export const validateEnvironmentVariables = (): void => {
-  const required = [
-    'NEXT_PUBLIC_SUPABASE_URL',
-    'NEXT_PUBLIC_SUPABASE_ANON_KEY'
-  ];
-
-  const missing = required.filter(key => !process.env[key]);
-  
-  if (missing.length > 0) {
-    const error = new Error(`Missing required environment variables: ${missing.join(', ')}`);
-    logger.error('Environment validation failed', error);
-    throw error;
-  }
-
-  // Validate URL format
-  try {
-    new URL(process.env.NEXT_PUBLIC_SUPABASE_URL!);
-  } catch {
-    const error = new Error('Invalid NEXT_PUBLIC_SUPABASE_URL format');
-    logger.error('Environment validation failed', error);
-    throw error;
-  }
-};
 
 // Security headers for API routes
 export const getSecurityHeaders = (): Record<string, string> => {
