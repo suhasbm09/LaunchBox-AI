@@ -214,7 +214,7 @@ ${code}
     logger.debug('Raw AI response content', { content });
 
     if (!content) {
-      logger.error('No content in OpenRouter response', { data });
+      logger.error('No content in OpenRouter response', undefined, { data });
       throw new Error('AI service returned empty response');
     }
 
