@@ -15,8 +15,21 @@
 
 ---
 
-## 🚀 Demo Video
-[![Watch the demo](https://img.shields.io/badge/Watch%20Demo%20Video-%23FF0000?logo=youtube&logoColor=white)](https://youtu.be/Tj690TNMELI)
+## 🆕 Live Demo
+
+[![Try LaunchBox.AI Live](https://img.shields.io/badge/Try%20Live-LaunchBox.AI-blue?style=for-the-badge)](https://launchai-deploy.vercel.app)
+
+*This is the official live deployment of LaunchBox.AI. Try it out!*
+
+---
+
+## 📹 Demo Video
+
+[![Watch the Demo](https://img.shields.io/badge/Watch%20Demo-YouTube-red?style=for-the-badge)](https://youtu.be/Tj690TNMELI)
+
+*Watch the full demo walkthrough to see LaunchBox.AI in action!*
+
+---
 
 ## ✨ Key Features
 
@@ -56,20 +69,14 @@
 ### 1. Clone & Install
 
 ```bash
-git clone https://github.com/suhasbm09/launchbox-ai.git
+git clone <your-private-repo-url>
 cd launchbox-ai
 npm install
 ```
 
 ### 2. Configure Environment
 
-Copy the example env and add your keys:
-
-```bash
-cp env.example .env.local
-```
-
-Edit `.env.local`:
+Create a `.env.local` file and add your keys:
 
 ```env
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
@@ -125,7 +132,7 @@ launchbox-ai/
 ## 🚀 Deployment
 
 ### Vercel (Recommended)
-1. Push to GitHub ([suhasbm09/launchbox-ai](https://github.com/suhasbm09/launchbox-ai))
+1. Push to your private GitHub repository
 2. Connect to [Vercel](https://vercel.com/)
 3. Add environment variables in the Vercel dashboard
 4. Deploy!
@@ -136,25 +143,6 @@ launchbox-ai/
 - DigitalOcean App Platform
 - AWS Amplify
 - Any platform supporting Next.js 14
-
----
-
-## 🆕 Live Demo
-
-[![Try LaunchBox.AI Live](https://img.shields.io/badge/Try%20Live-LaunchBox.AI-blue?style=for-the-badge)](https://launchai-deploy.vercel.app)
-
-*This is the official live deployment of LaunchBox.AI. Try it out!*  
-*Stay tuned for a demo video walkthrough!*
-
----
-
-## 📹 Demo Video
-
-<!--
-[![Watch the Demo](https://img.shields.io/badge/Watch%20Demo-YouTube-red?style=for-the-badge)](https://youtube.com/your-demo-link)
--->
-
-*Demo video will be available after the hackathon!*
 
 ---
 
