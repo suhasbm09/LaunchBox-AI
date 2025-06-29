@@ -141,11 +141,9 @@ launchbox-ai/
 
 ## 🆕 Live Demo
 
-<!--
-[![Try LaunchBox.AI Live](https://img.shields.io/badge/Try%20Live-LaunchBox.AI-blue?style=for-the-badge)](https://launchbox-ai.vercel.app)
--->
+[![Try LaunchBox.AI Live](https://img.shields.io/badge/Try%20Live-LaunchBox.AI-blue?style=for-the-badge)](https://launchai-deploy.vercel.app)
 
-*Coming soon: Try out LaunchBox.AI live!*  
+*This is the official live deployment of LaunchBox.AI. Try it out!*  
 *Stay tuned for a demo video walkthrough!*
 
 ---
