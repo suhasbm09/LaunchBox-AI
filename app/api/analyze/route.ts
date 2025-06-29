@@ -196,7 +196,8 @@ ${code}
         }
         
         if (attempt < maxRetries) {
-          logger.warn(`OpenRouter API request failed on attempt ${attempt}`, { error: error.message, clientIP });
+          const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+          logger.warn(`OpenRouter API request failed on attempt ${attempt}`, { error: errorMessage, clientIP });
           await new Promise(resolve => setTimeout(resolve, 1000 * attempt));
         }
       }
