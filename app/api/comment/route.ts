@@ -127,7 +127,7 @@ Return the fully commented code in a code block with proper syntax highlighting.
     const content = data.choices?.[0]?.message?.content;
 
     if (!content) {
-      logger.error('No content in OpenRouter response', { data });
+      logger.error('No content in OpenRouter response', undefined, { data });
       throw new Error('AI service returned empty response');
     }
 
