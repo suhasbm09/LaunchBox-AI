@@ -107,7 +107,7 @@ class ErrorHandler {
   }
 
   private showUserMessage(error: Error | AppError): void {
-    let message = ERROR_MESSAGES.SERVER_ERROR;
+    let message: string = ERROR_MESSAGES.SERVER_ERROR;
     let variant: 'default' | 'destructive' = 'destructive';
 
     if (error instanceof AppError && error.isOperational) {
