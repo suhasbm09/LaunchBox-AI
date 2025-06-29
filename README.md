@@ -15,6 +15,9 @@
 
 ---
 
+## 🚀 Demo Video
+[![Watch the demo](https://img.shields.io/badge/Watch%20Demo%20Video-%23FF0000?logo=youtube&logoColor=white)](https://youtu.be/Tj690TNMELI)
+
 ## ✨ Key Features
 
 - **AI-Powered DevOps Automation**

@@ -92,13 +92,15 @@ export function HeroSection() {
               >
                 Start Building
               </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 border border-secondary text-secondary hover:bg-secondary hover:text-white rounded-full font-semibold text-lg transition-all duration-300 focus-visible:focus"
+              <a
+                href="https://youtu.be/Tj690TNMELI"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-8 py-4 border border-secondary text-secondary hover:bg-secondary hover:text-white rounded-full font-semibold text-lg transition-all duration-300 focus-visible:focus flex items-center justify-center"
+                style={{ textDecoration: 'none' }}
               >
                 Watch Demo
-              </motion.button>
+              </a>
             </motion.div>
           </motion.div>
 
