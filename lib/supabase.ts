@@ -6,7 +6,10 @@ const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://placeholder
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'placeholder-key';
 
 // Only validate environment variables on the server and in production
-const shouldValidateEnv = typeof window === 'undefined' && process.env.NODE_ENV === 'production';
+// Skip validation if we're in development or if the variables are actually set
+const shouldValidateEnv = typeof window === 'undefined' && 
+  process.env.NODE_ENV === 'production' && 
+  (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
 
 if (shouldValidateEnv) {
   try {
